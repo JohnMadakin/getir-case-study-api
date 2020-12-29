@@ -1,0 +1,35 @@
+{
+  "name": "getir-challenge-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jest --forceExit --detectOpenHandles --verbose  --runInBand --coverage",
+    "lint": "eslint '**/*.js' > logs/lintlog",
+    "lintfix": "eslint '**/*.js' --fix > logs/lintlog",
+    "start": "node server.js"
+  },
+  "author": "Edafe",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.3.1",
+    "joi": "^17.3.0",
+    "mongoose": "^5.11.9",
+    "throng": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.0.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier-eslint-cli": "^5.0.0"
+  }
+}
