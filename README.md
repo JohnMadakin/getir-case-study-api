@@ -2,7 +2,8 @@
 
 #Getir Challenge
 ## Description
-Solution to Getir backend task
+Solution to Getir backend task.
+API url: https://getir-challenge-api.herokuapp.com
 
 
 ## Table of Contents
