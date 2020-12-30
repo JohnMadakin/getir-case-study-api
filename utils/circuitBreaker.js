@@ -1,6 +1,6 @@
 const { circuitBreakerDelay: delay, enableCircuitBreaker } = require('../config/app');
 
-const noOp = () => { };
+const noOp = () => {};
 
 function circuitBreaker(req, res, next) {
   if (enableCircuitBreaker) {
@@ -10,7 +10,7 @@ function circuitBreaker(req, res, next) {
     setTimeout(() => {
       if (!res.headersSent) {
         res.status(503).json({
-          code: '1',
+          code: '3',
           msg: 'Service timeout',
         });
 

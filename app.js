@@ -5,7 +5,8 @@ const helmet = require('helmet');
 const express = require('express');
 const cors = require('./utils/cors');
 const circuitBreaker = require('./utils/circuitBreaker');
-const rateLimiter = require('./utils/rateLimiter');
+const rateLimiter = require('./middlewares/rateLimiter');
+const records = require('./routes/v1');
 
 const { environment } = require('./config/app');
 
@@ -26,7 +27,6 @@ app.use((err, req, res, next) => {
   if (err.type === 'entity.parse.failed') {
     res.json({
       code: '1',
-      error: true,
       message: `invalid JSON '${err.body}' passed`,
     });
   } else {
@@ -34,6 +34,7 @@ app.use((err, req, res, next) => {
   }
 });
 
+// circuit breaker for Requests that take longer than 25 secs
 app.use(circuitBreaker);
 
 app.get('/', (req, res) => {
@@ -42,9 +43,11 @@ app.get('/', (req, res) => {
 
 const version = '/v1';
 
-app.use(version, rateLimiter);
-app.use(version, (req, res) => {
-  res.json({ msg: `Unimplemented ${req.method} ${req.path} route access` });
+app.use(version, rateLimiter, records);
+
+// Handle cases where no route is matched
+app.use('*', (req, res) => {
+  res.status(404).json({ code: 2, msg: `Unimplemented ${req.method} ${req.path} route access` });
 });
 
 module.exports = app;

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const throng = require('throng');
 const os = require('os');
 
