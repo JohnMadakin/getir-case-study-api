@@ -38,7 +38,7 @@ app.use((err, req, res, next) => {
 app.use(circuitBreaker);
 
 app.get('/', (req, res) => {
-  res.json({ version: 1.0 });
+  res.json({ version: '1.0' });
 });
 
 const version = '/v1';

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/JohnMadakin/getir-case-study-api.svg?branch=main)](https://travis-ci.com/JohnMadakin/getir-case-study-api)
+
 #Getir Challenge
 ## Description
 Solution to Getir backend task
